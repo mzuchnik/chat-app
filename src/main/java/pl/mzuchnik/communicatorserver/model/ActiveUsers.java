@@ -1,18 +1,17 @@
 package pl.mzuchnik.communicatorserver.model;
 
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Component
 public class ActiveUsers {
 
-    private List<String> users;
+    private Set<String> users;
 
     public ActiveUsers() {
-        this.users = new ArrayList<>();
+        this.users = new HashSet<>();
     }
 
     public void addUser(String username){
@@ -23,11 +22,11 @@ public class ActiveUsers {
         users.remove(username);
     }
 
-    public List<String> getUsers() {
+    public Set<String> getUsers() {
         return users;
     }
 
-    public void setUsers(List<String> users) {
+    public void setUsers(Set<String> users) {
         this.users = users;
     }
 

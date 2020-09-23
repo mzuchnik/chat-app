@@ -1,14 +1,16 @@
 package pl.mzuchnik.communicatorserver.controller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.context.annotation.Scope;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.context.WebApplicationContext;
 import pl.mzuchnik.communicatorserver.model.ActiveUsers;
 import pl.mzuchnik.communicatorserver.model.ChatMessage;
+
+import javax.servlet.http.HttpSession;
 
 @RestController
 public class ChatController {
@@ -25,14 +27,15 @@ public class ChatController {
         return chatMessage;
     }
 
-
     @MessageMapping("/chat.addUser")
     @SendTo("/topic/public")
     public ChatMessage addUser(@Payload ChatMessage chatMessage,
-                               SimpMessageHeaderAccessor headerAccessor) throws JsonProcessingException {
+                               SimpMessageHeaderAccessor headerAccessor){
         String username = chatMessage.getSender();
-        headerAccessor.getSessionAttributes().put("username", username);
         activeUsers.addUser(username);
+
         return chatMessage;
     }
+
+
 }

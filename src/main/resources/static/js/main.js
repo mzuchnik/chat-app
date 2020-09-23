@@ -17,19 +17,15 @@ var colors = [
     '#ffc107', '#ff85af', '#FF9800', '#39bbb0'
 ];
 
-function connect(event) {
-    username = document.querySelector('#name').value.trim();
+function connect() {
+    username = document.querySelector('#username').value.trim();
 
     if(username) {
-        usernamePage.classList.add('hidden');
-        chatPage.classList.remove('hidden');
-
         var socket = new SockJS('/ws');
         stompClient = Stomp.over(socket);
 
         stompClient.connect({}, onConnected, onError);
     }
-    event.preventDefault();
 }
 
 
@@ -146,5 +142,5 @@ function updateUsers(){
 
 }
 
-usernameForm.addEventListener('submit', connect, true)
+/*usernameForm.addEventListener('submit', connect, true)*/
 messageForm.addEventListener('submit', sendMessage, true)
