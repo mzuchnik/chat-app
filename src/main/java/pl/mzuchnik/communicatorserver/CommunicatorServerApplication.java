@@ -26,9 +26,9 @@ public class CommunicatorServerApplication {
     private PasswordEncoder encoder;
 
     @EventListener(ApplicationReadyEvent.class)
-    public void addSomeUsers(){
-        User user = new User("admin",encoder.encode("admin"));
-        User user1 = new User("user",encoder.encode("user"));
+    public void addSomeUsers() {
+        User user = new User("admin", encoder.encode("admin12345"), "admin@admin.com");
+        User user1 = new User("user", encoder.encode("user12345"), "user@user.com");
         userRepo.save(user);
         userRepo.save(user1);
         userRepo.flush();

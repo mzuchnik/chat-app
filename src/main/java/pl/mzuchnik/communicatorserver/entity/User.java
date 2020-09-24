@@ -1,10 +1,15 @@
 package pl.mzuchnik.communicatorserver.entity;
 
+import org.hibernate.validator.constraints.Length;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.sql.Date;
 import java.util.Collection;
 import java.util.Collections;
@@ -17,9 +22,14 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotEmpty(message = "Username cannot be empty")
     private String username;
 
+    @Length(min = 8, message = "Password length should be greater than 8")
     private String password;
+
+    @Email(message = "Email invalid")
+    private String email;
 
     private Date registrationDate;
 
@@ -30,12 +40,13 @@ public class User implements UserDetails {
     public User() {
     }
 
-    public User(String username, String password) {
+    public User(String username, String password, String email) {
         this.username = username;
         this.password = password;
         this.registrationDate = new Date(System.currentTimeMillis());
         this.enabled = true;
         this.authority = "USER";
+        this.email = email;
     }
 
     @Override
@@ -107,5 +118,13 @@ public class User implements UserDetails {
 
     public void setAuthority(String authority) {
         this.authority = authority;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
