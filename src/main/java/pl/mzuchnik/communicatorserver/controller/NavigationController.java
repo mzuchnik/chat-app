@@ -52,7 +52,7 @@ public class NavigationController {
         if (errors.hasErrors()) {
             return "sign-in";
         }
-        User user = new User(userReg.getUsername(), encoder.encode(userReg.getPassword()), userReg.getEmail());
+        User user = new User(userReg.getUsername().toLowerCase(), encoder.encode(userReg.getPassword()), userReg.getEmail());
         userRepo.save(user);
 
         return "redirect:/";

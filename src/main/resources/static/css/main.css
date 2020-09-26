@@ -144,10 +144,8 @@ button.accent {
     margin-right: auto;
     background-color: #fff;
     box-shadow: 0 1px 11px rgba(0, 0, 0, 0.27);
-    margin-top: 30px;
     height: calc(100% - 60px);
     max-height: 200px;
-    position: relative;
 }
 
 
@@ -158,9 +156,17 @@ button.accent {
     background-color: #fff;
     box-shadow: 0 1px 11px rgba(0, 0, 0, 0.27);
     margin-top: 30px;
-    height: calc(100% - 60px);
+    /*height: calc(100% - 60px);
     max-height: 600px;
-    position: relative;
+    position: relative;*/
+    height: 60%;
+}
+
+#messageArea{
+    overflow: auto;
+    overflow-y: scroll;
+    padding: 0 20px 0px 20px;
+    height: 350px;
 }
 
 #chat-page ul {
@@ -202,7 +208,7 @@ button.accent {
 
 #usersArea{
     margin-bottom: 30px;
-    max-height: 200px;
+    max-height: 120px;
 }
 
 .users-message{
@@ -306,13 +312,25 @@ button.accent {
     .chat-container {
         margin-left: 10px;
         margin-right: 10px;
+        /*margin-top: 10px;*/
+        height: 60%;
+    }
+    #chat-users{
+        margin-left: 10px;
+        margin-right: 10px;
         margin-top: 10px;
     }
 }
 
 @media screen and (max-width: 480px) {
     .chat-container {
-        height: calc(100% - 30px);
+        height: 70%;
+    }
+    #chat-users{
+        height: 20%;
+    }
+    #usersArea{
+        max-height: 64px;
     }
 
     .username-page-container {
@@ -323,7 +341,7 @@ button.accent {
     }
 
     #chat-page ul {
-        height: calc(100% - 120px);
+        /*height: calc(100% - 120px);*/
     }
 
     #messageForm .input-group button {

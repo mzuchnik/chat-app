@@ -29,8 +29,10 @@ public class CommunicatorServerApplication {
     public void addSomeUsers() {
         User user = new User("admin", encoder.encode("admin12345"), "admin@admin.com");
         User user1 = new User("user", encoder.encode("user12345"), "user@user.com");
+        User user2 = new User("ola", encoder.encode("ola12345"), "ola@ola.com");
         userRepo.save(user);
         userRepo.save(user1);
+        userRepo.save(user2);
         userRepo.flush();
     }
 

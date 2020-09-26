@@ -1,50 +1,59 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-  <head>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-      <title>Spring Boot WebSocket Chat Application</title>
-      <link rel="stylesheet" th:href="@{/css/main.css}" />
-  </head>
-  <body onload="connect()">
-    <noscript>
-      <h2>Sorry! Your browser doesn't support Javascript</h2>
-    </noscript>
-    <input id="username" th:attr="value = ${username}">
-    <div id="chat-page">
-        <div id="chat-users">
-            <div class="users-container">
-                <div class="users-header">
-                    <h2>Active users</h2>
-                </div>
-                <ul id="usersArea">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>Spring Boot WebSocket Chat Application</title>
+    <link rel="stylesheet" th:href="@{/css/main.css}"/>
+</head>
+<body onload="connect()">
+<noscript>
+    <h2>Sorry! Your browser doesn't support Javascript</h2>
+</noscript>
+<input id="username" th:attr="value = ${username}">
+<div id="chat-page">
+    <div id="chat-users">
+        <div class="users-container">
+            <div class="users-header" style="position: relative;">
+                <h2>Active users</h2>
 
-                </ul>
+                <form method="get" th:action="@{/logout}" style="position: absolute; top: 0; right: 0; margin: 5px 5px;">
+                    <div class="form-group">
+                        <div class="input-group clearfix">
+                            <button type="submit" class="accent">Logout</button>
+                        </div>
+                    </div>
+                </form>
             </div>
-        </div>
-        <div class="chat-container">
-            <div class="chat-header">
-                <h2>Global chat</h2>
-            </div>
-            <div class="connecting">
-                Connecting...
-            </div>
-            <ul id="messageArea">
+            <ul id="usersArea">
 
             </ul>
-            <form id="messageForm" name="messageForm">
-                <div class="form-group">
-                    <div class="input-group clearfix">
-                        <input type="text" id="message" placeholder="Type a message..." autocomplete="off" class="form-control"/>
-                        <button type="submit" class="primary">Send</button>
-                    </div>
-                </div>
-            </form>
         </div>
     </div>
+    <div class="chat-container">
+        <div class="chat-header">
+            <h2>Global chat</h2>
+        </div>
+        <div class="connecting">
+            Connecting...
+        </div>
+        <ul id="messageArea">
+
+        </ul>
+        <form id="messageForm" name="messageForm">
+            <div class="form-group">
+                <div class="input-group clearfix">
+                    <input type="text" id="message" placeholder="Type a message..." autocomplete="off"
+                           class="form-control"/>
+                    <button type="submit" class="primary">Send</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
 
 
-    <script th:src="@{/js/sockjs.min.js}"></script>
-    <script th:src="@{/js/stomp.min.js}"></script>
-    <script th:inline="javascript" th:src="@{/js/main.js}"></script>
-  </body>
+<script th:src="@{/js/sockjs.min.js}"></script>
+<script th:src="@{/js/stomp.min.js}"></script>
+<script th:inline="javascript" th:src="@{/js/main.js}"></script>
+</body>
 </html>
