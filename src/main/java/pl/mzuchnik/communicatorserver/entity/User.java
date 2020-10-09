@@ -4,10 +4,11 @@ import org.hibernate.validator.constraints.Length;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import pl.mzuchnik.communicatorserver.service.UniqueUsername;
 
 import javax.persistence.*;
+import javax.transaction.Transactional;
 import javax.validation.constraints.Email;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.sql.Date;
@@ -20,9 +21,11 @@ public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
 
     @NotEmpty(message = "Username cannot be empty")
+    @Column(unique = true)
+    /*@UniqueUsername*/
     private String username;
 
     @Length(min = 8, message = "Password length should be greater than 8")
@@ -38,14 +41,16 @@ public class User implements UserDetails {
     private String authority;
 
     public User() {
+        this.id = 0L;
+        this.enabled = true;
+        this.registrationDate = new Date(System.currentTimeMillis());
+        this.authority = "USER";
     }
 
     public User(String username, String password, String email) {
+        this();
         this.username = username;
         this.password = password;
-        this.registrationDate = new Date(System.currentTimeMillis());
-        this.enabled = true;
-        this.authority = "USER";
         this.email = email;
     }
 
@@ -88,7 +93,7 @@ public class User implements UserDetails {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -127,4 +132,5 @@ public class User implements UserDetails {
     public void setEmail(String email) {
         this.email = email;
     }
+
 }

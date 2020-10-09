@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.mzuchnik.communicatorserver.entity.User;
-import pl.mzuchnik.communicatorserver.repository.UserRepo;
+import pl.mzuchnik.communicatorserver.service.UserService;
 
 import javax.validation.Valid;
 import java.security.Principal;
@@ -19,12 +19,12 @@ import java.security.Principal;
 @Controller
 public class NavigationController {
 
-    private UserRepo userRepo;
+    private UserService userService;
     private PasswordEncoder encoder;
 
     @Autowired
-    public NavigationController(UserRepo userRepo, PasswordEncoder encoder) {
-        this.userRepo = userRepo;
+    public NavigationController(UserService userService, PasswordEncoder encoder) {
+        this.userService = userService;
         this.encoder = encoder;
     }
 
@@ -53,7 +53,7 @@ public class NavigationController {
             return "sign-in";
         }
         User user = new User(userReg.getUsername().toLowerCase(), encoder.encode(userReg.getPassword()), userReg.getEmail());
-        userRepo.save(user);
+        userService.addUser(user);
 
         return "redirect:/";
     }
