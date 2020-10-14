@@ -25,7 +25,7 @@ public class User implements UserDetails {
 
     @NotEmpty(message = "Username cannot be empty")
     @Column(unique = true)
-    /*@UniqueUsername*/
+    @UniqueUsername
     private String username;
 
     @Length(min = 8, message = "Password length should be greater than 8")
