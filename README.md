@@ -7,7 +7,7 @@ Kursy:
 - Spring Boot 2: Tworzenie efektywnych aplikacji internetowyc
 - Spring Boot 2: Skuteczne zabezpieczanie aplikacji
 
-W zakres kursu obowiązywał:
+Zakres kursu obowiązywał:
 1. Tworzenie usług RESTful z wykorzystaniem narzędzi Swagger,
 obsługą błędów i implementacją HATEOAS.
 2. Praca z usługami zdalnymi i tworzenie aplikacji klienckich.
