@@ -2,7 +2,7 @@
 
 ### Cel
 Aplikacja zostana stworzona jako podsumowanie ukończenia kursu "akademiaspring.pl", czego efektem było uzyskanie certyfikatu potwierdzającego nabyte umiejętności.
-[Heroku](https://broker-chat.herokuapp.com/)
+Link do aplikacji: (https://broker-chat.herokuapp.com/)
 Kursy:
 - Spring Boot 2: Tworzenie efektywnych aplikacji internetowyc
 - Spring Boot 2: Skuteczne zabezpieczanie aplikacji
