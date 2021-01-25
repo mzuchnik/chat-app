@@ -6,7 +6,7 @@ Aplikacja zostana stworzona jako podsumowanie ukończenia kursu "akademiaspring.
 Link do aplikacji: (https://broker-chat.herokuapp.com/)
 
 Kursy:
-- Spring Boot 2: Tworzenie efektywnych aplikacji internetowyc
+- Spring Boot 2: Tworzenie efektywnych aplikacji internetowych
 - Spring Boot 2: Skuteczne zabezpieczanie aplikacji
 
 Zakres kursu obowiązywał:
@@ -14,9 +14,9 @@ Zakres kursu obowiązywał:
 obsługą błędów i implementacją HATEOAS.
 2. Praca z usługami zdalnymi i tworzenie aplikacji klienckich.
 3. Budowanie aplikacji MVC, a także w podstawowym
-zakresie omówienie technologii: Vaadin, React, Thymleaf, Angular.
+zakresie omówienie technologii: Vaadin, React, Thymeleaf, Angular.
 4. Utrwalanie danych z wykorzystaniem JDBC i Hibernate.
-5. Praca z nierelacyjną bazą danych na przykładzie MongoDB.
+5. Praca z nie relacyjną bazą danych na przykładzie MongoDB.
 6. Zabezpieczanie usług wykorzystaniem z JWT i Basic Auth.
 
 ### Wykorzystany stack technologiczny
